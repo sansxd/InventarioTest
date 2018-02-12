@@ -4,7 +4,6 @@ include "conn.php";
 
 /* Database connection end */
 
-
 // storing  request (ie, get/post) global array to a variable
 $requestData= $_REQUEST;
 
@@ -96,8 +95,8 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["TIPODETINTA"];
     $nestedData[] = '<td><center>
                      <a href="editar.php?id='.$row['ID_INVENTARIO'].'"  data-toggle="tooltip" title="Editar datos" class="btn btn-sm btn-info"> <i class="menu-icon icon-pencil"></i> </a>
-                     <a href="administracion.php?action=delete&id='.$row['ID_INVENTARIO'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-danger"> <i class="menu-icon icon-trash"></i> </a>
-				     </center></td>';
+										 <a href="administracion.php?action=delete&id='.$row['ID_INVENTARIO'].'" onclick="return confirm(\'Esta seguro de borrar los datos de '.$row['NOMBRE'].'?\')"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-danger"> <i class="menu-icon icon-trash"></i> </a>
+						 </center></td>';
 
 	$data[] = $nestedData;
 
@@ -112,6 +111,8 @@ $json_data = array(
 			"data"            => $data   // total data array
 			);
 
-echo json_encode($json_data);  // send data as json format
-
+echo json_encode($json_data);
+// send data as json format
+//onclick="getInventarioid('.$row['ID_INVENTARIO'].')"
+//<a href="delete.php?action=delete&id='.$row['ID_INVENTARIO'].'"  data-toggle="tooltip" title="Eliminar" class="btn btn-sm btn-danger"> <i class="menu-icon icon-trash"></i> </a>
 ?>

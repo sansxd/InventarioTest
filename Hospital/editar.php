@@ -1,4 +1,6 @@
-﻿<?php include "conn.php"; ?>
+﻿<?php include "conn.php";
+include('session.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +112,7 @@
                     <div class="control-group">
 											<label class="control-label" for="basicinput">Teléfono</label>
 											<div class="controls">
-												<input type="text" name="telefono" id="telefono" value="<?php echo $row['TELEFONO']; ?>" placeholder="" class="form-control span8 tip" >
+												<input type="number" name="telefono" id="telefono" value="<?php echo $row['TELEFONO']; ?>" placeholder="" class="form-control span8 tip" >
 											</div>
 										</div>
                     <div class="control-group">
